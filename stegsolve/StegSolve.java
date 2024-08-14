@@ -64,6 +64,10 @@ public class StegSolve extends JFrame
      */
     private JMenuItem imageCombine;
     /**
+     * Menu option - frame browser
+     */
+    private JMenuItem flirExtract;
+    /**
      * Menu bar
      */
     private JMenuBar menuBar;
@@ -139,6 +143,7 @@ public class StegSolve extends JFrame
         stereoSolve = new JMenuItem();
         frameBrowse = new JMenuItem();
         imageCombine = new JMenuItem();
+        flirExtract = new JMenuItem();
         menuHelp = new JMenu();
         about = new JMenuItem();
         nowShowing = new JLabel();
@@ -185,6 +190,10 @@ public class StegSolve extends JFrame
         imageCombine.setText("Image Combiner");
         imageCombine.addActionListener(this::imageCombineActionPerformed);
         menuAnalyse.add(imageCombine);
+
+        flirExtract.setText("Flir Extract");
+        flirExtract.addActionListener(this::flirExtractActionPerformed);
+        menuAnalyse.add(flirExtract);
 
         menuBar.add(menuAnalyse);
 
@@ -373,6 +382,14 @@ public class StegSolve extends JFrame
                 JOptionPane.showMessageDialog(this, "Failed to load file: " +e.toString());
             }
         }
+    }
+
+    /**
+     * Open the stereogram solver
+     * @param evt Event
+     */
+    private void flirExtractActionPerformed(ActionEvent evt) {
+        new Flir(bi).setVisible(true);
     }
 
     /**
